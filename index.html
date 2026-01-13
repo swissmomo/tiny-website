@@ -58,7 +58,7 @@
         width: 100%;
         text-align: center;
         position: relative;
-        z-index: 1;
+        z-index: 10;
         animation: pulse 3s ease-in-out infinite;
       }
 
@@ -136,91 +136,111 @@
         margin-bottom: 0;
       }
 
+      /* REAL DOGS */
+
       .dog {
         position: absolute;
-        font-size: 40px;
-        z-index: 0;
-        filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
-        opacity: 0.6;
+        z-index: 1;
+        pointer-events: none;
       }
 
-      .dog1 {
-        animation: run1 15s linear infinite;
+      .dog img {
+        height: 80px;
+        width: auto;
+        border-radius: 999px;
+        filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
+        opacity: 0.9;
       }
 
-      .dog2 {
-        animation: run2 18s linear infinite;
-      }
+      .dog1 { top: 18vh; animation: run1 14s linear infinite; }
+      .dog2 { top: 35vh; animation: run2 18s linear infinite; }
+      .dog3 { top: 52vh; animation: run3 16s linear infinite; }
+      .dog4 { top: 68vh; animation: run4 20s linear infinite; }
+      .dog5 { top: 25vh; animation: run5 22s linear infinite; }
 
-      .dog3 {
-        animation: run3 20s linear infinite;
-      }
-
-      .dog4 {
-        animation: run4 16s linear infinite;
-      }
-
-      .dog5 {
-        animation: run5 22s linear infinite;
-      }
-
+      /* Dogs run left-right and flip direction */
       @keyframes run1 {
-        0% { transform: translate(-50px, 20vh) rotate(0deg); }
-        25% { transform: translate(calc(100vw + 50px), 20vh) rotate(0deg); }
-        26% { transform: translate(calc(100vw + 50px), 20vh) rotate(180deg); }
-        50% { transform: translate(-50px, 20vh) rotate(180deg); }
-        51% { transform: translate(-50px, 20vh) rotate(0deg); }
-        100% { transform: translate(-50px, 20vh) rotate(0deg); }
+        0%   { transform: translateX(-150px) scaleX(1); }
+        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        99%  { transform: translateX(-150px) scaleX(-1); }
+        100% { transform: translateX(-150px) scaleX(1); }
       }
 
       @keyframes run2 {
-        0% { transform: translate(calc(100vw + 50px), 40vh) rotate(180deg); }
-        25% { transform: translate(-50px, 40vh) rotate(180deg); }
-        26% { transform: translate(-50px, 40vh) rotate(0deg); }
-        50% { transform: translate(calc(100vw + 50px), 40vh) rotate(0deg); }
-        51% { transform: translate(calc(100vw + 50px), 40vh) rotate(180deg); }
-        100% { transform: translate(calc(100vw + 50px), 40vh) rotate(180deg); }
+        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        49%  { transform: translateX(-150px) scaleX(-1); }
+        50%  { transform: translateX(-150px) scaleX(1); }
+        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
       }
 
       @keyframes run3 {
-        0% { transform: translate(30vw, -50px) rotate(90deg); }
-        25% { transform: translate(30vw, calc(100vh + 50px)) rotate(90deg); }
-        26% { transform: translate(30vw, calc(100vh + 50px)) rotate(270deg); }
-        50% { transform: translate(30vw, -50px) rotate(270deg); }
-        51% { transform: translate(30vw, -50px) rotate(90deg); }
-        100% { transform: translate(30vw, -50px) rotate(90deg); }
+        0%   { transform: translateX(-150px) scaleX(1); }
+        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        99%  { transform: translateX(-150px) scaleX(-1); }
+        100% { transform: translateX(-150px) scaleX(1); }
       }
 
       @keyframes run4 {
-        0% { transform: translate(70vw, calc(100vh + 50px)) rotate(270deg); }
-        25% { transform: translate(70vw, -50px) rotate(270deg); }
-        26% { transform: translate(70vw, -50px) rotate(90deg); }
-        50% { transform: translate(70vw, calc(100vh + 50px)) rotate(90deg); }
-        51% { transform: translate(70vw, calc(100vh + 50px)) rotate(270deg); }
-        100% { transform: translate(70vw, calc(100vh + 50px)) rotate(270deg); }
+        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        49%  { transform: translateX(-150px) scaleX(-1); }
+        50%  { transform: translateX(-150px) scaleX(1); }
+        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
       }
 
       @keyframes run5 {
-        0% { transform: translate(-50px, 60vh) rotate(0deg); }
-        20% { transform: translate(calc(100vw + 50px), 30vh) rotate(0deg); }
-        21% { transform: translate(calc(100vw + 50px), 30vh) rotate(180deg); }
-        40% { transform: translate(-50px, 60vh) rotate(180deg); }
-        41% { transform: translate(-50px, 60vh) rotate(0deg); }
-        100% { transform: translate(-50px, 60vh) rotate(0deg); }
+        0%   { transform: translateX(-150px) scaleX(1); }
+        40%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        41%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        80%  { transform: translateX(-150px) scaleX(-1); }
+        100% { transform: translateX(-150px) scaleX(1); }
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 32px 24px;
+        }
+
+        h1 {
+          font-size: 28px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .dog img {
+          height: 60px;
+        }
       }
     </style>
   </head>
   
   <body>
-    <div class="dog dog1">🐕</div>
-    <div class="dog dog2">🐶</div>
-    <div class="dog dog3">🐕</div>
-    <div class="dog dog4">🐶</div>
-    <div class="dog dog5">🐕</div>
+    <!-- Real running dogs (replace the src with your own GIFs/videos if you want) -->
+    <div class="dog dog1">
+      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
+    </div>
+    <div class="dog dog2">
+      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
+    </div>
+    <div class="dog dog3">
+      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
+    </div>
+    <div class="dog dog4">
+      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
+    </div>
+    <div class="dog dog5">
+      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
+    </div>
+
     <div class="card">
       <h1>Hi Sarge!</h1>
       <p>I love baxy.</p>
-      <p>He is so cute and fluffy</p>
+      <p>He is so cute and fluffy.</p>
     </div>
   </body>
 </html>
