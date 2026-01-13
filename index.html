@@ -2,13 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Pikachu Zone</title>
+    <title>My Tiny Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
         background: #0a0e27;
@@ -17,127 +21,197 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
+        padding: 20px;
+        line-height: 1.6;
         position: relative;
+        overflow: hidden;
       }
 
-      /* Cyber grid background */
       body::before {
         content: '';
         position: absolute;
-        inset: 0;
-        background: 
-          linear-gradient(90deg, transparent 79px, rgba(0,255,255,0.03) 81px, rgba(0,255,255,0.03) 82px, transparent 84px),
-          linear-gradient(rgba(0,255,255,0.03) 79px, transparent 81px, transparent 82px, rgba(0,255,255,0.03) 84px);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          linear-gradient(90deg, transparent 79px, rgba(0, 255, 255, 0.03) 81px, rgba(0, 255, 255, 0.03) 82px, transparent 84px),
+          linear-gradient(rgba(0, 255, 255, 0.03) 79px, transparent 81px, transparent 82px, rgba(0, 255, 255, 0.03) 84px);
         background-size: 100px 100px;
         animation: gridMove 20s linear infinite;
       }
+
       @keyframes gridMove {
-        0% { transform: translate(0,0); }
-        100% { transform: translate(100px,100px); }
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(100px, 100px); }
       }
 
-      /* Pikachu layer */
-      .pika {
-        position: absolute;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0.9;
-        filter: drop-shadow(0 0 15px rgba(255,255,0,0.8));
-      }
-
-      /* Pikachu sprite image sizing */
-      .pika img {
-        width: 80px;
-        height: auto;
-      }
-
-      /* Card in front */
       .card {
+        background: rgba(10, 14, 39, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        border-radius: 20px;
+        box-shadow:
+          0 0 40px rgba(0, 255, 255, 0.2),
+          inset 0 0 40px rgba(0, 255, 255, 0.05);
+        padding: 48px 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
         position: relative;
         z-index: 10;
-        max-width: 500px;
-        padding: 45px;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          box-shadow:
+            0 0 40px rgba(0, 255, 255, 0.2),
+            inset 0 0 40px rgba(0, 255, 255, 0.05);
+        }
+        50% {
+          box-shadow:
+            0 0 60px rgba(0, 255, 255, 0.4),
+            inset 0 0 40px rgba(0, 255, 255, 0.1);
+        }
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #00ffff);
         border-radius: 20px;
-        text-align: center;
-        background: rgba(10,14,39,0.75);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(0,255,255,0.3);
-        box-shadow: 0 0 40px rgba(0,255,255,0.3);
+        z-index: -1;
+        opacity: 0.3;
+        animation: borderGlow 3s linear infinite;
+        background-size: 400% 400%;
+      }
+
+      @keyframes borderGlow {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
 
       h1 {
-        font-size: 34px;
         color: #00ffff;
-        margin-bottom: 20px;
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 24px;
+        text-shadow:
+          0 0 10px rgba(0, 255, 255, 0.8),
+          0 0 20px rgba(0, 255, 255, 0.5),
+          0 0 30px rgba(0, 255, 255, 0.3);
+        letter-spacing: 2px;
       }
+
       p {
-        color: #b0e0e6;
         font-size: 18px;
+        color: #b0e0e6;
+        margin-bottom: 16px;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+        letter-spacing: 1px;
       }
 
-      /* Pikachu flight animations */
-      @keyframes flyDiag1 {
-        0% { transform: translate(-200px, 110vh) scaleX(1); }
-        100% { transform: translate(120vw, -200px) scaleX(1); }
-      }
-      @keyframes flyDiag2 {
-        0% { transform: translate(120vw, 110vh) scaleX(-1); }
-        100% { transform: translate(-200px, -200px) scaleX(-1); }
-      }
-      @keyframes flyDiag3 {
-        0% { transform: translate(-200px, -200px) scaleX(1); }
-        100% { transform: translate(120vw, 110vh) scaleX(1); }
+      p:last-child {
+        margin-bottom: 0;
       }
 
+      /* PIKACHU LAYER */
+
+      .pika {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 12px rgba(255, 255, 0, 0.9));
+      }
+
+      .pika img {
+        width: 70px;
+        height: auto;
+      }
+
+      .pika1 { top: 10vh; animation: fly1 16s linear infinite; }
+      .pika2 { top: 25vh; animation: fly2 20s linear infinite; }
+      .pika3 { top: 40vh; animation: fly1 18s linear infinite; }
+      .pika4 { top: 55vh; animation: fly2 22s linear infinite; }
+      .pika5 { top: 70vh; animation: fly1 19s linear infinite; }
+      .pika6 { top: 15vh; animation: fly2 21s linear infinite; }
+      .pika7 { top: 35vh; animation: fly1 17s linear infinite; }
+      .pika8 { top: 60vh; animation: fly2 23s linear infinite; }
+
+      @keyframes fly1 {
+        0%   { transform: translateX(-150px) scaleX(1); }
+        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        99%  { transform: translateX(-150px) scaleX(-1); }
+        100% { transform: translateX(-150px) scaleX(1); }
+      }
+
+      @keyframes fly2 {
+        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+        49%  { transform: translateX(-150px) scaleX(-1); }
+        50%  { transform: translateX(-150px) scaleX(1); }
+        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
+        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 32px 24px;
+        }
+
+        h1 {
+          font-size: 28px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .pika img {
+          width: 50px;
+        }
+      }
     </style>
   </head>
 
   <body>
-
-    <!-- Card -->
-    <div class="card">
-      <h1>Pikachu Invasion</h1>
-      <p>There are so many Pikachus omg</p>
+    <!-- PIKACHUS (external GIFs for now; see notes below to host your own) -->
+    <div class="pika pika1">
+      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika2">
+      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika3">
+      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika4">
+      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika5">
+      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika6">
+      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika7">
+      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
+    </div>
+    <div class="pika pika8">
+      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
     </div>
 
-    <!-- Pikachu assets -->
-    <!-- transparent looping GIF -->
-    <!-- GOOD GIF SOURCE -->
-    <!-- (just swapped 1 animation, duplicated 12 times w/random timings) -->
-    
-    <script>
-      const pikaCount = 15;
-      const gif = "https://media.giphy.com/media/l0HlSNOxJB956qwfK/giphy.gif";
-
-      for (let i = 0; i < pikaCount; i++) {
-        const el = document.createElement('div');
-        el.className = 'pika';
-        
-        const img = document.createElement('img');
-        img.src = gif;
-        el.appendChild(img);
-
-        // random size
-        const size = 50 + Math.random()*60;
-        img.style.width = size + "px";
-
-        // random animation path
-        const paths = ['flyDiag1','flyDiag2','flyDiag3'];
-        const anim = paths[Math.floor(Math.random()*paths.length)];
-
-        // random duration
-        const duration = 12 + Math.random()*14;
-
-        // random delay
-        const delay = Math.random()*10;
-        
-        // apply animation
-        el.style.animation = `${anim} ${duration}s linear ${delay}s infinite`;
-
-        document.body.appendChild(el);
-      }
-    </script>
-
+    <!-- YOUR ORIGINAL CARD + TEXT -->
+    <div class="card">
+      <h1>Hi Sarge!</h1>
+      <p>I love baxy.</p>
+      <p>He is so cute and fluffy</p>
+    </div>
   </body>
 </html>
