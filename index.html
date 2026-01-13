@@ -2,16 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>My Tiny Website</title>
+    <title>Pikachu Zone</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         background: #0a0e27;
@@ -20,227 +17,85 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
-        line-height: 1.6;
-        position: relative;
         overflow: hidden;
+        position: relative;
       }
 
+      /* Cyber grid background */
       body::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background: 
-          linear-gradient(90deg, transparent 79px, rgba(0, 255, 255, 0.03) 81px, rgba(0, 255, 255, 0.03) 82px, transparent 84px),
-          linear-gradient(rgba(0, 255, 255, 0.03) 79px, transparent 81px, transparent 82px, rgba(0, 255, 255, 0.03) 84px);
+          linear-gradient(90deg, transparent 79px, rgba(0,255,255,0.03) 81px, rgba(0,255,255,0.03) 82px, transparent 84px),
+          linear-gradient(rgba(0,255,255,0.03) 79px, transparent 81px, transparent 82px, rgba(0,255,255,0.03) 84px);
         background-size: 100px 100px;
         animation: gridMove 20s linear infinite;
       }
-
       @keyframes gridMove {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(100px, 100px); }
+        0% { transform: translate(0,0); }
+        100% { transform: translate(100px,100px); }
       }
 
+      /* Pikachu layer */
+      .pika {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 15px rgba(255,255,0,0.8));
+      }
+
+      /* Pikachu sprite image sizing */
+      .pika img {
+        width: 80px;
+        height: auto;
+      }
+
+      /* Card in front */
       .card {
-        background: rgba(10, 14, 39, 0.7);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        border-radius: 20px;
-        box-shadow: 
-          0 0 40px rgba(0, 255, 255, 0.2),
-          inset 0 0 40px rgba(0, 255, 255, 0.05);
-        padding: 48px 40px;
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
         position: relative;
         z-index: 10;
-        animation: pulse 3s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%, 100% {
-          box-shadow: 
-            0 0 40px rgba(0, 255, 255, 0.2),
-            inset 0 0 40px rgba(0, 255, 255, 0.05);
-        }
-        50% {
-          box-shadow: 
-            0 0 60px rgba(0, 255, 255, 0.4),
-            inset 0 0 40px rgba(0, 255, 255, 0.1);
-        }
-      }
-
-      .card::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #00ffff);
+        max-width: 500px;
+        padding: 45px;
         border-radius: 20px;
-        z-index: -1;
-        opacity: 0.3;
-        animation: borderGlow 3s linear infinite;
-        background-size: 400% 400%;
-      }
-
-      @keyframes borderGlow {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+        text-align: center;
+        background: rgba(10,14,39,0.75);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0,255,255,0.3);
+        box-shadow: 0 0 40px rgba(0,255,255,0.3);
       }
 
       h1 {
+        font-size: 34px;
         color: #00ffff;
-        font-size: 36px;
-        font-weight: 900;
-        margin-bottom: 24px;
-        text-shadow: 
-          0 0 10px rgba(0, 255, 255, 0.8),
-          0 0 20px rgba(0, 255, 255, 0.5),
-          0 0 30px rgba(0, 255, 255, 0.3);
-        letter-spacing: 2px;
-        animation: textGlow 2s ease-in-out infinite alternate;
+        margin-bottom: 20px;
       }
-
-      @keyframes textGlow {
-        from {
-          text-shadow: 
-            0 0 10px rgba(0, 255, 255, 0.8),
-            0 0 20px rgba(0, 255, 255, 0.5),
-            0 0 30px rgba(0, 255, 255, 0.3);
-        }
-        to {
-          text-shadow: 
-            0 0 15px rgba(0, 255, 255, 1),
-            0 0 25px rgba(0, 255, 255, 0.7),
-            0 0 35px rgba(0, 255, 255, 0.5),
-            0 0 45px rgba(0, 255, 255, 0.3);
-        }
-      }
-
       p {
-        font-size: 18px;
         color: #b0e0e6;
-        margin-bottom: 16px;
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-        letter-spacing: 1px;
+        font-size: 18px;
       }
 
-      p:last-child {
-        margin-bottom: 0;
+      /* Pikachu flight animations */
+      @keyframes flyDiag1 {
+        0% { transform: translate(-200px, 110vh) scaleX(1); }
+        100% { transform: translate(120vw, -200px) scaleX(1); }
+      }
+      @keyframes flyDiag2 {
+        0% { transform: translate(120vw, 110vh) scaleX(-1); }
+        100% { transform: translate(-200px, -200px) scaleX(-1); }
+      }
+      @keyframes flyDiag3 {
+        0% { transform: translate(-200px, -200px) scaleX(1); }
+        100% { transform: translate(120vw, 110vh) scaleX(1); }
       }
 
-      /* REAL DOGS */
-
-      .dog {
-        position: absolute;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .dog img {
-        height: 80px;
-        width: auto;
-        border-radius: 999px;
-        filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
-        opacity: 0.9;
-      }
-
-      .dog1 { top: 18vh; animation: run1 14s linear infinite; }
-      .dog2 { top: 35vh; animation: run2 18s linear infinite; }
-      .dog3 { top: 52vh; animation: run3 16s linear infinite; }
-      .dog4 { top: 68vh; animation: run4 20s linear infinite; }
-      .dog5 { top: 25vh; animation: run5 22s linear infinite; }
-
-      /* Dogs run left-right and flip direction */
-      @keyframes run1 {
-        0%   { transform: translateX(-150px) scaleX(1); }
-        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        99%  { transform: translateX(-150px) scaleX(-1); }
-        100% { transform: translateX(-150px) scaleX(1); }
-      }
-
-      @keyframes run2 {
-        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        49%  { transform: translateX(-150px) scaleX(-1); }
-        50%  { transform: translateX(-150px) scaleX(1); }
-        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-      }
-
-      @keyframes run3 {
-        0%   { transform: translateX(-150px) scaleX(1); }
-        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        99%  { transform: translateX(-150px) scaleX(-1); }
-        100% { transform: translateX(-150px) scaleX(1); }
-      }
-
-      @keyframes run4 {
-        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        49%  { transform: translateX(-150px) scaleX(-1); }
-        50%  { transform: translateX(-150px) scaleX(1); }
-        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-      }
-
-      @keyframes run5 {
-        0%   { transform: translateX(-150px) scaleX(1); }
-        40%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        41%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        80%  { transform: translateX(-150px) scaleX(-1); }
-        100% { transform: translateX(-150px) scaleX(1); }
-      }
-
-      @media (max-width: 600px) {
-        .card {
-          padding: 32px 24px;
-        }
-
-        h1 {
-          font-size: 28px;
-        }
-
-        p {
-          font-size: 16px;
-        }
-
-        .dog img {
-          height: 60px;
-        }
-      }
     </style>
   </head>
-  
-  <body>
-    <!-- Real running dogs (replace the src with your own GIFs/videos if you want) -->
-    <div class="dog dog1">
-      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
-    </div>
-    <div class="dog dog2">
-      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
-    </div>
-    <div class="dog dog3">
-      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
-    </div>
-    <div class="dog dog4">
-      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
-    </div>
-    <div class="dog dog5">
-      <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Running dog">
-    </div>
 
+  <body>
+
+    <!-- Card -->
     <div class="card">
-      <h1>Hi Sarge!</h1>
-      <p>I love baxy.</p>
-      <p>He is so cute and fluffy.</p>
-    </div>
-  </body>
-</html>
+      <h1>Pikachu Invasion</h1>
+      <p>There are so ma
