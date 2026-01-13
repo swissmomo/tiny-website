@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>My Tiny Website</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <style>
+<style>
       * {
         margin: 0;
         padding: 0;
@@ -15,8 +6,8 @@
       }
 
       body {
-        background: #0a0e27;
-        font-family: 'Orbitron', monospace;
+        background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -27,124 +18,77 @@
         overflow: hidden;
       }
 
-      body::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          linear-gradient(90deg, transparent 79px, rgba(0, 255, 255, 0.03) 81px, rgba(0, 255, 255, 0.03) 82px, transparent 84px),
-          linear-gradient(rgba(0, 255, 255, 0.03) 79px, transparent 81px, transparent 82px, rgba(0, 255, 255, 0.03) 84px);
-        background-size: 100px 100px;
-        animation: gridMove 20s linear infinite;
-      }
-
-      @keyframes gridMove {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(100px, 100px); }
-      }
-
       .card {
-        background: rgba(10, 14, 39, 0.7);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 24px;
         box-shadow:
-          0 0 40px rgba(0, 255, 255, 0.2),
-          inset 0 0 40px rgba(0, 255, 255, 0.05);
-        padding: 48px 40px;
+          0 8px 32px rgba(0, 0, 0, 0.08),
+          0 2px 8px rgba(0, 0, 0, 0.04);
+        padding: 60px 48px;
         max-width: 500px;
         width: 100%;
         text-align: center;
         position: relative;
         z-index: 10;
-        animation: pulse 3s ease-in-out infinite;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      @keyframes pulse {
-        0%, 100% {
-          box-shadow:
-            0 0 40px rgba(0, 255, 255, 0.2),
-            inset 0 0 40px rgba(0, 255, 255, 0.05);
-        }
-        50% {
-          box-shadow:
-            0 0 60px rgba(0, 255, 255, 0.4),
-            inset 0 0 40px rgba(0, 255, 255, 0.1);
-        }
-      }
-
-      .card::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #00ffff);
-        border-radius: 20px;
-        z-index: -1;
-        opacity: 0.3;
-        animation: borderGlow 3s linear infinite;
-        background-size: 400% 400%;
-      }
-
-      @keyframes borderGlow {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 48px rgba(0, 0, 0, 0.12),
+          0 4px 12px rgba(0, 0, 0, 0.06);
       }
 
       h1 {
-        color: #00ffff;
-        font-size: 36px;
-        font-weight: 900;
+        background: linear-gradient(135deg, #0071e3 0%, #00c2ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 48px;
+        font-weight: 700;
         margin-bottom: 24px;
-        text-shadow:
-          0 0 10px rgba(0, 255, 255, 0.8),
-          0 0 20px rgba(0, 255, 255, 0.5),
-          0 0 30px rgba(0, 255, 255, 0.3);
-        letter-spacing: 2px;
+        letter-spacing: -0.5px;
       }
 
       p {
-        font-size: 18px;
-        color: #b0e0e6;
+        font-size: 21px;
+        color: #1d1d1f;
         margin-bottom: 16px;
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-        letter-spacing: 1px;
+        font-weight: 400;
+        letter-spacing: -0.2px;
       }
 
       p:last-child {
         margin-bottom: 0;
       }
 
-      /* PIKACHU LAYER */
+      /* DOG LAYER */
 
-      .pika {
+      .dog {
         position: absolute;
         z-index: 1;
         pointer-events: none;
-        opacity: 0.9;
-        filter: drop-shadow(0 0 12px rgba(255, 255, 0, 0.9));
+        opacity: 0.85;
       }
 
-      .pika img {
-        width: 70px;
+      .dog img {
+        width: 80px;
         height: auto;
       }
 
-      .pika1 { top: 10vh; animation: fly1 16s linear infinite; }
-      .pika2 { top: 25vh; animation: fly2 20s linear infinite; }
-      .pika3 { top: 40vh; animation: fly1 18s linear infinite; }
-      .pika4 { top: 55vh; animation: fly2 22s linear infinite; }
-      .pika5 { top: 70vh; animation: fly1 19s linear infinite; }
-      .pika6 { top: 15vh; animation: fly2 21s linear infinite; }
-      .pika7 { top: 35vh; animation: fly1 17s linear infinite; }
-      .pika8 { top: 60vh; animation: fly2 23s linear infinite; }
+      .dog1 { top: 8vh; animation: run1 14s linear infinite; }
+      .dog2 { top: 22vh; animation: run2 18s linear infinite; }
+      .dog3 { top: 38vh; animation: run1 16s linear infinite; }
+      .dog4 { top: 52vh; animation: run2 20s linear infinite; }
+      .dog5 { top: 68vh; animation: run1 17s linear infinite; }
+      .dog6 { top: 12vh; animation: run2 19s linear infinite; }
+      .dog7 { top: 32vh; animation: run1 15s linear infinite; }
+      .dog8 { top: 58vh; animation: run2 21s linear infinite; }
 
-      @keyframes fly1 {
+      @keyframes run1 {
         0%   { transform: translateX(-150px) scaleX(1); }
         49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
         50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
@@ -152,7 +96,7 @@
         100% { transform: translateX(-150px) scaleX(1); }
       }
 
-      @keyframes fly2 {
+      @keyframes run2 {
         0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
         49%  { transform: translateX(-150px) scaleX(-1); }
         50%  { transform: translateX(-150px) scaleX(1); }
@@ -162,56 +106,19 @@
 
       @media (max-width: 600px) {
         .card {
-          padding: 32px 24px;
+          padding: 40px 32px;
         }
 
         h1 {
-          font-size: 28px;
+          font-size: 36px;
         }
 
         p {
-          font-size: 16px;
+          font-size: 18px;
         }
 
-        .pika img {
-          width: 50px;
+        .dog img {
+          width: 60px;
         }
       }
     </style>
-  </head>
-
-  <body>
-    <!-- PIKACHUS (external GIFs for now; see notes below to host your own) -->
-    <div class="pika pika1">
-      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika2">
-      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika3">
-      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika4">
-      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika5">
-      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika6">
-      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika7">
-      <img src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif" alt="Pikachu">
-    </div>
-    <div class="pika pika8">
-      <img src="https://media.giphy.com/media/10LKovKon8DENq/giphy.gif" alt="Pikachu">
-    </div>
-
-    <!-- YOUR ORIGINAL CARD + TEXT -->
-    <div class="card">
-      <h1>Hi Sarge!</h1>
-      <p>I love baxy.</p>
-      <p>He is so cute and fluffy</p>
-    </div>
-  </body>
-</html>
