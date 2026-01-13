@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Tiny Website</title>
-
     <style>
       * {
         margin: 0;
@@ -12,152 +12,95 @@
       }
 
       body {
-        background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        background: #f5f5f7;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
-        line-height: 1.6;
-        position: relative;
-        overflow: hidden;
+        line-height: 1.47059;
+        font-weight: 400;
+        letter-spacing: -0.022em;
+        color: #1d1d1f;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       .card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(40px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 24px;
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.08),
-          0 2px 8px rgba(0, 0, 0, 0.04);
-        padding: 60px 48px;
-        max-width: 500px;
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 
+          0 2px 8px rgba(0, 0, 0, 0.04),
+          0 1px 2px rgba(0, 0, 0, 0.06);
+        padding: 64px 48px;
+        max-width: 560px;
         width: 100%;
         text-align: center;
-        position: relative;
-        z-index: 10;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .card:hover {
-        transform: translateY(-4px);
-        box-shadow:
-          0 12px 48px rgba(0, 0, 0, 0.12),
-          0 4px 12px rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+        box-shadow: 
+          0 8px 24px rgba(0, 0, 0, 0.08),
+          0 2px 4px rgba(0, 0, 0, 0.06);
       }
 
       h1 {
-        background: linear-gradient(135deg, #0071e3 0%, #00c2ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #1d1d1f;
         font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 24px;
-        letter-spacing: -0.5px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        letter-spacing: -0.003em;
+        line-height: 1.08349;
       }
 
       p {
         font-size: 21px;
-        color: #1d1d1f;
-        margin-bottom: 16px;
+        color: #86868b;
+        margin-bottom: 12px;
+        letter-spacing: 0.011em;
+        line-height: 1.381;
         font-weight: 400;
-        letter-spacing: -0.2px;
       }
 
       p:last-child {
         margin-bottom: 0;
       }
 
-      /* DOG LAYER */
-
-      .dog {
-        position: absolute;
-        z-index: 1;
-        pointer-events: none;
-        opacity: 0.85;
-      }
-
-      .dog img {
-        width: 80px;
-        height: auto;
-      }
-
-      .dog1 { top: 8vh; animation: run1 14s linear infinite; }
-      .dog2 { top: 22vh; animation: run2 18s linear infinite; }
-      .dog3 { top: 38vh; animation: run1 16s linear infinite; }
-      .dog4 { top: 52vh; animation: run2 20s linear infinite; }
-      .dog5 { top: 68vh; animation: run1 17s linear infinite; }
-      .dog6 { top: 12vh; animation: run2 19s linear infinite; }
-      .dog7 { top: 32vh; animation: run1 15s linear infinite; }
-      .dog8 { top: 58vh; animation: run2 21s linear infinite; }
-
-      @keyframes run1 {
-        0%   { transform: translateX(-150px) scaleX(1); }
-        49%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        50%  { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        99%  { transform: translateX(-150px) scaleX(-1); }
-        100% { transform: translateX(-150px) scaleX(1); }
-      }
-
-      @keyframes run2 {
-        0%   { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-        49%  { transform: translateX(-150px) scaleX(-1); }
-        50%  { transform: translateX(-150px) scaleX(1); }
-        99%  { transform: translateX(calc(100vw + 150px)) scaleX(1); }
-        100% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
-      }
-
-      @media (max-width: 600px) {
+      @media (max-width: 768px) {
         .card {
-          padding: 40px 32px;
+          padding: 48px 32px;
         }
 
         h1 {
-          font-size: 36px;
+          font-size: 40px;
         }
 
         p {
-          font-size: 18px;
+          font-size: 19px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 40px 24px;
         }
 
-        .dog img {
-          width: 60px;
+        h1 {
+          font-size: 32px;
+        }
+
+        p {
+          font-size: 17px;
         }
       }
     </style>
   </head>
-
+  
   <body>
-    <!-- DOGS (running animations) -->
-    <div class="dog dog1">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog2">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog3">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog4">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog5">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog6">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog7">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-    <div class="dog dog8">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQ4aWt0Ym5uZnVqNjRyZjJ3cHVyYzJvdm1zanN3YTNtZzN6N2Q2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mCRJDo24UvJMA/giphy.gif" alt="Dog running">
-    </div>
-
-    <!-- YOUR CARD + TEXT -->
     <div class="card">
       <h1>Hi Sarge!</h1>
       <p>I love baxy.</p>
