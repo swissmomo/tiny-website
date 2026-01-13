@@ -98,4 +98,46 @@
     <!-- Card -->
     <div class="card">
       <h1>Pikachu Invasion</h1>
-      <p>There are so ma
+      <p>There are so many Pikachus omg</p>
+    </div>
+
+    <!-- Pikachu assets -->
+    <!-- transparent looping GIF -->
+    <!-- GOOD GIF SOURCE -->
+    <!-- (just swapped 1 animation, duplicated 12 times w/random timings) -->
+    
+    <script>
+      const pikaCount = 15;
+      const gif = "https://media.giphy.com/media/l0HlSNOxJB956qwfK/giphy.gif";
+
+      for (let i = 0; i < pikaCount; i++) {
+        const el = document.createElement('div');
+        el.className = 'pika';
+        
+        const img = document.createElement('img');
+        img.src = gif;
+        el.appendChild(img);
+
+        // random size
+        const size = 50 + Math.random()*60;
+        img.style.width = size + "px";
+
+        // random animation path
+        const paths = ['flyDiag1','flyDiag2','flyDiag3'];
+        const anim = paths[Math.floor(Math.random()*paths.length)];
+
+        // random duration
+        const duration = 12 + Math.random()*14;
+
+        // random delay
+        const delay = Math.random()*10;
+        
+        // apply animation
+        el.style.animation = `${anim} ${duration}s linear ${delay}s infinite`;
+
+        document.body.appendChild(el);
+      }
+    </script>
+
+  </body>
+</html>
