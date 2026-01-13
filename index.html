@@ -3,27 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <title>My Tiny Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-  body {
-    background-color: #f6f8fa;
-    font-family: Arial, sans-serif;
-    padding: 40px;
-    line-height: 1.6;
-  }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  h1 {
-    color: #0366d6;
-  }
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
 
-  p {
-    font-size: 18px;
-  }
-  </style>
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 48px 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        color: #0366d6;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 18px;
+        color: #24292e;
+        margin-bottom: 16px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
   </head>
   
   <body>
-    <h1>Hi Sarge!</h1>
-    <p>I love baxy.</p>
-    <p>He is so cute and fluffy</p>
+    <div class="card">
+      <h1>Hi Sarge!</h1>
+      <p>I love baxy.</p>
+      <p>He is so cute and fluffy</p>
+    </div>
   </body>
 </html>
